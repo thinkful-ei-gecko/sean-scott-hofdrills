@@ -1,30 +1,78 @@
+//problem 1: repeat function
+
+function repeat(fn, n) {
+    for (n; n > 0; n--) {
+        fn();
+    }
+}
+function hello() {
+    console.log('Hello world');
+}
+function goodbye() {
+    console.log('Goodbye world');
+}
+
+repeat(hello, 5);
+repeat(goodbye, 5);
+
+
+//problem 2: filter function
+//with Bonus
+
 function filter(arr, fn) {
-    // TASK: Define your function here
     let newArray = [];
     arr.forEach(x=>fn(x) ? newArray.push(x) : x);
     return newArray;
 }
-//Bonus credit done!
 function filterAlt(arr, fn) {
     arr.forEach(x=>fn(x) ? console.log(x) : x);
 }
 
-// DO NOT EDIT BETWEEN THESE LINES, BUT DO READ THE CODE ----->
-// First we setup an array of strings we plan to filter:
 const myNames = ['Rich', 'Joe', 'Bhaumik', 'Ray'];
-
-// We use your `filter` function here, capturing a new array into `filteredNames`
-// comprised of names that only begin with 'R'
 const filteredNames = filterAlt(myNames, function(name) {
-    // This is known as a "predicate function" - it's a function that 
-    // only returns a boolean
     return name[0] === 'R';
 });
 
 //console.log(filteredNames) // => ['Rich', 'Ray']
-// <---- DO NOT EDIT BETWEEN THESE LINES
 
 
+//problem 3: functions as returned values - hazard warning function
+//With Bonus!
+
+function hazardWarningCreator(typeOfWarning) {
+    let warningCounter = 0;
+
+    return function(location) {
+        warningCounter++;
+        console.log(`DANGER! There is a ${typeOfWarning} hazard at ${location}`);
+        console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter === 1 ? `${warningCounter} time` : `${warningCounter} times`} today!`);
+    }
+}
+
+const rocksWarning = hazardWarningCreator('Rocks on the Road');
+rocksWarning('Main St and Pacific Ave');
+rocksWarning('Centinela Ave and Olympic Blvd');
+rocksWarning('42nd and Washington');
+
+
+//problem 4: Turtle time!
+
+function turtleTime(arr) {
+    let results = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        results.push(arr[i].filter(v=> v > 0));
+    }
+
+    results = results.filter(x=> x.length !== 0);
+    results = results.map(x=> x.length === 2 ? x[0] + x[1] : x[0]);
+    results.forEach((x, i) => console.log(`Movement # ${i+1}: ${x === 1 ? `${x} step` : `${x} steps`}`));
+}
+
+turtleTime([[0, 0], [0, 5], [-1, -3], [-3, 1], [2, -4], [3, 2]]);
+
+
+//problem 5: decoding with reduce
 
 function stringMutilator(str) {
     let arr = str.split(' ');
@@ -33,3 +81,12 @@ function stringMutilator(str) {
 }
 
 console.log(stringMutilator('noggin oreo the moon time tele steed his tent apollo her lives though shoo tofu budapest'));
+
+
+
+
+
+
+
+
+
