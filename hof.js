@@ -1,35 +1,40 @@
-function filter(arr, fn) {
-    // TASK: Define your function here
-    let newArray = [];
-    arr.forEach(x=>fn(x) ? newArray.push(x) : x);
-    return newArray;
-}
-//Bonus credit done!
-function filterAlt(arr, fn) {
-    arr.forEach(x=>fn(x) ? console.log(x) : x);
-}
-
-// DO NOT EDIT BETWEEN THESE LINES, BUT DO READ THE CODE ----->
-// First we setup an array of strings we plan to filter:
-const myNames = ['Rich', 'Joe', 'Bhaumik', 'Ray'];
-
-// We use your `filter` function here, capturing a new array into `filteredNames`
-// comprised of names that only begin with 'R'
-const filteredNames = filterAlt(myNames, function(name) {
-    // This is known as a "predicate function" - it's a function that 
-    // only returns a boolean
-    return name[0] === 'R';
-});
-
-//console.log(filteredNames) // => ['Rich', 'Ray']
-// <---- DO NOT EDIT BETWEEN THESE LINES
-
-
-
-function stringMutilator(str) {
-    let arr = str.split(' ');
-    arr.unshift('');
-    return mutilatedString = arr.reduce((a, b)=> b.length !== 3 ? a += b[b.length - 1] : a += ' ');
+'use strict';
+function repeat(fn, n) {
+  if (fn === hello) {
+    fn(hello(n));
+  }
+  else if (fn === goodbye) {
+    fn(goodbye(n));
+  }
+  else 
+    console.log('There is an error somewhere');
 }
 
-console.log(stringMutilator('noggin oreo the moon time tele steed his tent apollo her lives though shoo tofu budapest'));
+function hello(n){
+  for (let i=0; i<n; i++){
+    console.log('Hello world');
+  }
+}
+
+function goodbye(n){
+  for (let k=0; k<n; k++) {
+    console.log('Goodbye world');
+  }
+}
+
+repeat(hello, 5);
+repeat(goodbye, 5);
+
+function hazardWarningCreator (typeOfWarning) {
+  let warningCounter = 0;
+  return function(location) {
+    warningCounter++;
+    let message = `Danger! There is a ${typeOfWarning} at ${location} !\n` + 
+    `The ${typeOfWarning} hazard alert has triggered ${warningCounter} time(s) today!`;
+    return message;
+  };
+}
+
+const rocksWarning = hazardWarningCreator('Rocks on the Road');
+console.log(rocksWarning('Main St and Pacific Ave'));
+
