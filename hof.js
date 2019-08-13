@@ -33,8 +33,6 @@ const filteredNames = filterAlt(myNames, function(name) {
     return name[0] === 'R';
 });
 
-//console.log(filteredNames) // => ['Rich', 'Ray']
-
 
 //problem 3: functions as returned values - hazard warning function
 //With Bonus!
@@ -48,7 +46,6 @@ function hazardWarningCreator(typeOfWarning) {
         console.log(`The ${typeOfWarning} hazard alert has triggered ${warningCounter === 1 ? `${warningCounter} time` : `${warningCounter} times`} today!`);
     }
 }
-
 const rocksWarning = hazardWarningCreator('Rocks on the Road');
 rocksWarning('Main St and Pacific Ave');
 rocksWarning('Centinela Ave and Olympic Blvd');
